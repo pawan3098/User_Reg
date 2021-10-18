@@ -27,7 +27,7 @@ namespace User_Reg.Controllers
             return View(UserInfo);
         }
 
-        
+        // To insert the User data in database 
         [HttpPost]
        
         public ActionResult Index(UserClass uc, HttpPostedFileBase Ufile)
@@ -60,8 +60,8 @@ namespace User_Reg.Controllers
             ViewData["Message"] = "User Record " + uc.FirstName + " is saved Successfully ";
             return View(mod);
         }
-   
 
+        //Insert Record in City Table
         public List<CityMaster> GetCityMasters()
         {
             List<CityMaster> rvar = new List<CityMaster>();
@@ -84,6 +84,7 @@ namespace User_Reg.Controllers
             return rvar;
         }
 
+        // To Display All Users 
         public ActionResult DisplayAll()
         {
             List<UserClass> users = new List<UserClass>();
@@ -91,19 +92,19 @@ namespace User_Reg.Controllers
             return View(users);
         }
 
-
+        // code of edit the user  (id = null) value is coming (Not working Code)
         public ActionResult EditUser(int? id)
         {
-           /* if (id == null)
+            if (id == null)
             {
                 return HttpNotFound();
-            }*/
+            }
             UserClass user = objUser.GetCustomerData(id);
-            /*
+            
             if (user == null)
             {
                 return HttpNotFound();
-            }*/
+            }
             return View(user);
         }
 
@@ -131,6 +132,9 @@ namespace User_Reg.Controllers
         }
 
 
+
+        // code of Delete the user  (id = null) value is coming (Not working Code)
+
         [HttpGet]
         public ActionResult DeleteUser(int? id)
         {
@@ -155,6 +159,7 @@ namespace User_Reg.Controllers
             return RedirectToAction("Index");
         }
 
+        // Display About us page of Company
         public ActionResult AboutCompany()
         {
             return View();
